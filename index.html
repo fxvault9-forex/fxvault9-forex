@@ -156,5 +156,41 @@
     </div>
   </section>
 
+
+<!-- Image Modal -->
+<div id="imgModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
+  <span id="closeModal" class="absolute top-6 right-8 text-white text-3xl cursor-pointer">&times;</span>
+  <img id="modalImg" class="max-w-4xl max-h-[80vh] rounded-lg shadow-lg">
+</div>
+
+<script>
+  // Get modal elements
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modalImg");
+  const closeBtn = document.getElementById("closeModal");
+
+  // Attach click event to all trade images
+  document.querySelectorAll(".trade-img").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      modalImg.src = img.src;
+    });
+  });
+
+  // Close modal on click of X
+  closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  // Close modal on outside click
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+    }
+  });
+</script>
 </body>
 </html>
+
+
